@@ -26,12 +26,20 @@ class _SearchState extends State<Search> with SingleTickerProviderStateMixin {
           children: [
             Container(
               height: 150,
-              child: const Center(
+              child: Center(
 
                /* child: Text(
                   'Your Widget if you want',
                 ),*/
-                child: TopWidget(),
+                child: Row(
+                    children: const [
+                      SizedBox(width: 10),
+                      TopWidget(),
+                      SizedBox(width: 10),
+                      TopWidget(),
+                      SizedBox(width: 10),
+                    ],
+                ),
               ),
               color: Colors.white70,
             ),

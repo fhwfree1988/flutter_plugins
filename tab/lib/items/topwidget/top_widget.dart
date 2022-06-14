@@ -6,7 +6,19 @@ class TopWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();/*Container(
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+        boxShadow: [BoxShadow(blurRadius: 10, color: Colors.black45, spreadRadius: 2)],
+      ),
+      child: const CircleAvatar(
+        backgroundColor: Colors.white,
+        radius: 30.0,
+        backgroundImage: AssetImage('assets/widget/fire.png'),
+      ),
+    );
+    /*Container(
         decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
@@ -42,5 +54,34 @@ class TopWidget extends StatelessWidget {
 
     canvas.drawShadow(path, Color(0xff000000), 3, true);
     canvas.drawPath(path, myPaint);
+  }
+
+
+}
+
+class Painter extends CustomPainter {
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    double radius = 100.0;
+    canvas.translate(size.width/2, size.height/2);
+    Offset center = Offset(0.0, 0.0);
+    // draw shadow first
+    Path oval = Path()
+      ..addOval(Rect.fromCircle(center: center, radius: radius+10));
+    Paint shadowPaint = Paint()
+      ..color = Colors.black.withOpacity(0.3)
+      ..maskFilter = MaskFilter.blur(BlurStyle.normal, 50);
+    canvas.drawPath(oval, shadowPaint);
+    // draw circle
+    Paint thumbPaint = Paint()
+      ..color = Colors.white
+      ..style = PaintingStyle.fill;
+    canvas.drawCircle(center, radius, thumbPaint);
+  }
+
+  @override
+  bool shouldRepaint(Painter oldDelegate) {
+    return false;
   }
 }
