@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tab/items/topwidget/top_widget.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -25,12 +26,14 @@ class _SearchState extends State<Search> with SingleTickerProviderStateMixin {
           children: [
             Container(
               height: 150,
-              child: Center(
-                child: Text(
+              child: const Center(
+
+               /* child: Text(
                   'Your Widget if you want',
-                ),
+                ),*/
+                child: TopWidget(),
               ),
-              color: Colors.blue,
+              color: Colors.white70,
             ),
             TabBar(
               unselectedLabelColor: Colors.black,
